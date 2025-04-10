@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Trees as Tree, Heart, Brain, GraduationCap, Trash2, Users, Activity, Music, Lightbulb, Wheat, QrCode, Scan, Award, Share2 } from 'lucide-react';
+import { EventRegistrationForm } from '../features/EventRegistrationForm';
 
 const categories = [
   { icon: Tree, title: 'Tree Planting Drives', sdgs: 'SDGs: 13, 15', description: 'Join our mission to green Malawi' },
@@ -37,6 +38,8 @@ const testimonials = [
 ];
 
 export function Events() {
+  const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
+
   return (
     <main>
       {/* Header Section */}
@@ -123,46 +126,21 @@ export function Events() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Be part of Malawi's sustainable future</h2>
           <div className="flex justify-center gap-4">
-            <button className="px-8 py-3 bg-white text-emerald-900 rounded-full font-semibold hover:bg-gray-100 transition">
+            <button 
+              onClick={() => setIsRegistrationOpen(true)}
+              className="px-8 py-3 bg-white text-emerald-900 rounded-full font-semibold hover:bg-gray-100 transition"
+            >
               Register Your Event
-            </button>
-            <button className="px-8 py-3 bg-emerald-700 rounded-full font-semibold hover:bg-emerald-600 transition">
-              Join an Event
             </button>
           </div>
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-emerald-400">About</a></li>
-                <li><a href="#" className="hover:text-emerald-400">Events</a></li>
-                <li><a href="#" className="hover:text-emerald-400">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2">
-                <li>info@activerse.org</li>
-                <li>+265 999 999 999</li>
-                <li>Lilongwe, Malawi</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-emerald-400">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-emerald-400">Privacy Policy</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Event Registration Modal */}
+      <EventRegistrationForm 
+        isOpen={isRegistrationOpen}
+        onClose={() => setIsRegistrationOpen(false)}
+      />
     </main>
   );
 }

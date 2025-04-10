@@ -86,9 +86,6 @@ export function Community() {
               and smart contracts to recognize and reward social impact. Our phygital NFTs
               bridge the gap between real-world actions and digital recognition.
             </p>
-            <button className="px-8 py-3 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition">
-              Join the Community
-            </button>
           </div>
         </div>
       </section>
@@ -151,11 +148,6 @@ export function Community() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <button className="px-8 py-3 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition">
-              Join the Discussion
-            </button>
-          </div>
         </div>
       </section>
 
@@ -208,9 +200,6 @@ export function Community() {
       <section className="py-16 bg-emerald-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Be a part of Malawi's journey toward sustainability</h2>
-          <button className="px-8 py-3 bg-white text-emerald-900 rounded-full font-semibold hover:bg-gray-100 transition">
-            Sign Up Now
-          </button>
         </div>
       </section>
     </main>
