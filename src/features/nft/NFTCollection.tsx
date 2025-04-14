@@ -38,7 +38,7 @@ export function NFTCollection() {
         imageUrl: '/images/blood donation.jpg',
         sdg: 'SDG 3: Good Health and Well-being',
         organization: 'Red Cross',
-        date: '2024-03-15',
+        date: '2025-03-15',
         owner: '0x1234...5678'
       },
       {
@@ -48,7 +48,7 @@ export function NFTCollection() {
         imageUrl: '/images/Enviromental Champion.png',
         sdg: 'SDG 13: Climate Action',
         organization: 'Green Earth',
-        date: '2024-03-14',
+        date: '2025-03-14',
         owner: '0x2345...6789'
       },
       {
@@ -58,7 +58,7 @@ export function NFTCollection() {
         imageUrl: '/images/Education Advocate NFT.jpg',
         sdg: 'SDG 4: Quality Education',
         organization: 'Teach For All',
-        date: '2024-03-13',
+        date: '2025-03-13',
         owner: '0x3456...7890'
       },
       {
@@ -68,7 +68,7 @@ export function NFTCollection() {
         imageUrl: '/images/Clean water Hero NFT.jpeg',
         sdg: 'SDG 6: Clean Water and Sanitation',
         organization: 'WaterAid',
-        date: '2024-03-12',
+        date: '2025-03-12',
         owner: '0x4567...8901'
       }
     ];
