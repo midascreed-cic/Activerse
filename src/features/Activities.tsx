@@ -10,6 +10,7 @@ interface Activity {
   sdg: string;
   organization: string;
   status: 'open' | 'completed';
+  viewMoreLink?: string;
 }
 
 export function Activities() {
@@ -23,7 +24,8 @@ export function Activities() {
       deadline: '2024-04-30',
       sdg: 'SDG 11: Sustainable Cities and Communities',
       organization: 'Green Earth',
-      status: 'open'
+      status: 'open',
+      viewMoreLink: 'https://www.greenearthpressmalawi.com/'
     },
     {
       id: '2',
@@ -33,17 +35,19 @@ export function Activities() {
       deadline: '2024-05-15',
       sdg: 'SDG 3: Good Health and Well-being',
       organization: 'Red Cross',
-      status: 'open'
+      status: 'open',
+      viewMoreLink: 'https://www.redcross.mw/'
     },
     {
       id: '3',
       title: 'Education Workshop',
       description: 'Conduct a workshop for underprivileged children in your community.',
       reward: 'Education Champion NFT',
-      deadline: '2024-05-30',
+      deadline: '2025-07-29',
       sdg: 'SDG 4: Quality Education',
       organization: 'Teach For All',
-      status: 'open'
+      status: 'open',
+      viewMoreLink: 'https://web.facebook.com/people/Teach-For-Malawi/100085267377142/'
     }
   ]);
 
@@ -74,18 +78,27 @@ export function Activities() {
                   <p><span className="font-medium">Organization:</span> {activity.organization}</p>
                 </div>
               </div>
-              <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                activity.status === 'open' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
-              }`}>
-                {activity.status}
-              </span>
+              <div className="mt-4 flex items-center justify-between">
+                <span className={`inline-flex items-center rounded-full px-2 py-1 text-xs ${
+                  activity.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                }`}>
+                  {activity.status}
+                </span>
+                {activity.viewMoreLink && (
+                  <a
+                    href={activity.viewMoreLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm font-semibold text-emerald-600 hover:text-emerald-500"
+                  >
+                    View More
+                    <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
-            <button
-              onClick={() => window.open('https://example.com/activity/' + activity.id, '_blank')}
-              className="mt-4 bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-            >
-              View More
-            </button>
           </div>
         ))}
       </div>

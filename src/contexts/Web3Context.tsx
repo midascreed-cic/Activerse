@@ -38,6 +38,8 @@ const providerOptions = {
 const web3Modal = new Web3Modal({
   cacheProvider: true,
   providerOptions,
+  theme: 'dark',
+  disableInjectedProvider: false
 });
 
 export function Web3Provider({ children }: { children: React.ReactNode }) {

@@ -45,7 +45,6 @@ export function Navbar() {
               <Link to="/events" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Events</Link>
               <Link to="/activities" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Activities</Link>
               <Link to="/nft-collection" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">NFT Collection</Link>
-              <Link to="/impact" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Impact</Link>
               <Link to="/community" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Community</Link>
               <Link to="/qr-scanner" className="text-emerald-400 hover:text-emerald-300 transition-colors duration-200 font-medium">Claim NFT</Link>
               
@@ -127,13 +126,6 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               NFT Collection
-            </Link>
-            <Link
-              to="/impact"
-              className="block px-4 py-3 rounded-lg text-gray-300 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all duration-200"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Impact
             </Link>
             <Link
               to="/community"

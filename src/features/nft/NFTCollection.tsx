@@ -80,7 +80,7 @@ export function NFTCollection() {
         nftId: '1',
         from: '0x0000000000000000000000000000000000000000',
         to: '0x1234...5678',
-        date: '2024-03-15 14:30'
+        date: '2025-03-15'
       },
       {
         id: '2',
@@ -88,7 +88,7 @@ export function NFTCollection() {
         nftId: '1',
         from: '0x1234...5678',
         to: '0x2345...6789',
-        date: '2024-03-15 15:45'
+        date: '2025-03-15'
       },
       {
         id: '3',
@@ -96,7 +96,7 @@ export function NFTCollection() {
         nftId: '2',
         from: '0x0000000000000000000000000000000000000000',
         to: '0x2345...6789',
-        date: '2024-03-14 10:15'
+        date: '2025-04-01'
       },
       {
         id: '4',
@@ -104,7 +104,7 @@ export function NFTCollection() {
         nftId: '3',
         from: '0x0000000000000000000000000000000000000000',
         to: '0x3456...7890',
-        date: '2024-03-13 09:30'
+        date: '2025-03-17'
       },
       {
         id: '5',
@@ -112,7 +112,7 @@ export function NFTCollection() {
         nftId: '3',
         from: '0x3456...7890',
         to: '0x4567...8901',
-        date: '2024-03-13 11:20'
+        date: '2025-03-13'
       },
       {
         id: '6',
@@ -120,7 +120,7 @@ export function NFTCollection() {
         nftId: '4',
         from: '0x0000000000000000000000000000000000000000',
         to: '0x4567...8901',
-        date: '2024-03-12 16:45'
+        date: '2025-03-05'
       },
       {
         id: '7',
@@ -128,7 +128,7 @@ export function NFTCollection() {
         nftId: '2',
         from: '0x2345...6789',
         to: '0x5678...9012',
-        date: '2024-03-14 14:30'
+        date: '2025-02-17'
       },
       {
         id: '8',
@@ -136,7 +136,7 @@ export function NFTCollection() {
         nftId: '4',
         from: '0x4567...8901',
         to: '0x6789...0123',
-        date: '2024-03-12 18:15'
+        date: '2025-02-07'
       }
     ];
 

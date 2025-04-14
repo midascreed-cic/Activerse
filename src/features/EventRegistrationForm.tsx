@@ -143,7 +143,7 @@ export function EventRegistrationForm({ isOpen, onClose }: EventRegistrationForm
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Related SDGs</label>
             <div className="grid grid-cols-3 gap-2">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map((sdg) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((sdg) => (
                 <label key={sdg} className="flex items-center space-x-2">
                   <input
                     type="checkbox"

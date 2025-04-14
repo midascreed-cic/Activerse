@@ -27,13 +27,13 @@ const testimonials = [
     name: 'Sarah Banda',
     role: 'Community Leader',
     quote: 'ActiVerse has transformed how we track and celebrate community participation.',
-    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce'
+    image: '/images/user.jpeg'
   },
   {
     name: 'John Phiri',
     role: 'Environmental Activist',
     quote: 'The gamification of social impact has brought more youth to our initiatives.',
-    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6'
+    image: '/images/user.jpeg'
   }
 ];
 
