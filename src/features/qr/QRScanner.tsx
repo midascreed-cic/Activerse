@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { QrReader } from 'react-qr-reader';
+import React, { useState, useEffect, useRef } from 'react';
+import { Html5QrcodeScanner } from 'html5-qrcode';
 import { useWeb3 } from '../../contexts/Web3Context';
 import { X, RefreshCw, Camera } from 'lucide-react';
 
@@ -11,27 +11,20 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScanComplete }) => {
   const [error, setError] = useState<string | null>(null);
   const [isScanning, setIsScanning] = useState(false);
   const { signer, account } = useWeb3();
+  const scannerRef = useRef<Html5QrcodeScanner | null>(null);
 
-  // Stop camera stream when component unmounts or scanning is stopped
   useEffect(() => {
     return () => {
-      if (!isScanning) {
-        // Get all media streams and stop them
-        navigator.mediaDevices.getUserMedia({ video: true })
-          .then(stream => {
-            stream.getTracks().forEach(track => track.stop());
-          })
-          .catch(err => console.log('No media stream to clean up'));
+      if (scannerRef.current) {
+        scannerRef.current.clear();
       }
     };
-  }, [isScanning]);
+  }, []);
 
-  const handleScan = async (result: string | null) => {
-    if (!result) return;
-    
+  const handleScan = async (decodedText: string) => {
     try {
       // Validate the QR code data
-      const qrData = JSON.parse(result);
+      const qrData = JSON.parse(decodedText);
       
       if (!qrData.eventId || !qrData.contractAddress) {
         throw new Error('Invalid QR code data');
@@ -39,9 +32,12 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScanComplete }) => {
 
       // Stop scanning after successful scan
       setIsScanning(false);
+      if (scannerRef.current) {
+        scannerRef.current.clear();
+      }
       
       if (onScanComplete) {
-        onScanComplete(result);
+        onScanComplete(decodedText);
       }
     } catch (err) {
       setError('Invalid QR code. Please scan a valid ActiVerse event QR code.');
@@ -49,26 +45,38 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScanComplete }) => {
     }
   };
 
-  const handleError = (error: Error) => {
+  const handleError = (error: string) => {
     console.error('QR Scanner error:', error);
     setError('Failed to access camera. Please ensure camera permissions are granted.');
     setIsScanning(false);
   };
 
   const handleCancel = () => {
+    if (scannerRef.current) {
+      scannerRef.current.clear();
+    }
     setIsScanning(false);
     setError(null);
   };
 
   const handleStartScanning = async () => {
     try {
-      // Request camera permission first
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      // Stop the test stream immediately
-      stream.getTracks().forEach(track => track.stop());
-      // If we got here, permission was granted, so start scanning
       setIsScanning(true);
       setError(null);
+
+      // Initialize the scanner
+      scannerRef.current = new Html5QrcodeScanner(
+        "qr-reader",
+        {
+          fps: 10,
+          qrbox: { width: 250, height: 250 },
+          aspectRatio: 1,
+          showTorchButtonIfSupported: true,
+        },
+        false
+      );
+
+      scannerRef.current.render(handleScan, handleError);
     } catch (err) {
       setError('Camera permission denied. Please allow camera access to scan QR codes.');
       console.error('Camera permission error:', err);
@@ -108,17 +116,8 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScanComplete }) => {
             </button>
           </div>
         ) : (
-          <>
-            <QrReader
-              constraints={{ facingMode: 'environment' }}
-              onResult={(result) => {
-                if (result) {
-                  handleScan(result.getText());
-                }
-              }}
-              videoId="qr-video"
-              className="w-full rounded-lg overflow-hidden"
-            />
+          <div className="relative">
+            <div id="qr-reader" className="w-full rounded-lg overflow-hidden" />
             <button
               onClick={handleCancel}
               className="absolute top-4 right-4 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200"
@@ -126,7 +125,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScanComplete }) => {
             >
               <X className="w-6 h-6 text-gray-700" />
             </button>
-          </>
+          </div>
         )}
       </div>
 
